@@ -11,14 +11,14 @@ namespace SalesManagement.Server.Controllers
         CustomerDA da = new CustomerDA();
 
         [HttpGet]
-        [Route("api/Employee/Index")]
+        [Route("api/Customer/Index")]
         public IEnumerable<Customer> Index()
         {
             return da.GetAllCustomers();
         }
 
         [HttpPost]
-        [Route("api/Employee/Create")]
+        [Route("api/Customer/Create")]
         public void Create([FromBody] Customer customer)
         {
             if (ModelState.IsValid)
@@ -26,7 +26,7 @@ namespace SalesManagement.Server.Controllers
         }
 
         [HttpGet]
-        [Route("api/Employee/Details/{id}")]
+        [Route("api/Customer/Details/{id}")]
         public Customer Details(int id)
         {
 
@@ -34,7 +34,7 @@ namespace SalesManagement.Server.Controllers
         }
 
         [HttpPut]
-        [Route("api/Employee/Edit")]
+        [Route("api/Customer/Edit")]
         public void Edit([FromBody]Customer customer)
         {
             if (ModelState.IsValid)
@@ -42,7 +42,7 @@ namespace SalesManagement.Server.Controllers
         }
 
         [HttpDelete]
-        [Route("api/Employee/Delete/{id}")]
+        [Route("api/Customer/Delete/{id}")]
         public void Delete(int id)
         {
             da.DeleteCustomer(id);

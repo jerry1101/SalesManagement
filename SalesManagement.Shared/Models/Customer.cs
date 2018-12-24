@@ -7,8 +7,7 @@ namespace SalesManagement.Shared.Models
     {
         public Customer()
         {
-            CustomerAddress = new HashSet<CustomerAddress>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+
         }
 
         public int CustomerId { get; set; }
@@ -27,7 +26,6 @@ namespace SalesManagement.Shared.Models
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<CustomerAddress> CustomerAddress { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+
     }
 }

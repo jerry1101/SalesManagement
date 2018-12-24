@@ -1,0 +1,44 @@
+﻿@using SalesManagement.Shared.Models
+@page "/customer"
+@inject HttpClient http
+<h1>Customer info Maintanance</h1>
+
+@if (customerList == null)
+{
+    <p>Loading Customer Data -------</p>
+}
+else
+{
+    <table class="customerTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in customerList)
+            {
+                <tr>
+                    <td>@c.FirstName</td>
+                    <td>@c.LastName</td>
+                </tr>
+            }
+        </tbody>
+        
+    </table>
+
+}
+
+@functions{
+    Customer[] customerList;
+    protected override async Task OnInitAsync()
+    {
+        customerList = await http.GetJsonAsync<Customer[]>("/api/Customer/Index");
+    }
+
+
+
+
+
+}

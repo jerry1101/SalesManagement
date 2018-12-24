@@ -17,7 +17,7 @@ namespace SalesManagement.Server.DataAccess
         {
             try
             {
-                return db.tblCustomer.ToList();
+                return db.Customer.ToList();
             }
             catch
             {
@@ -30,7 +30,7 @@ namespace SalesManagement.Server.DataAccess
         {
             try
             {
-                db.tblCustomer.Add(customer);
+                db.Customer.Add(customer);
                 db.SaveChanges();
             }
             catch
@@ -58,7 +58,7 @@ namespace SalesManagement.Server.DataAccess
         {
             try
             {
-                Customer employee = db.tblCustomer.Find(id);
+                Customer employee = db.Customer.Find(id);
                 return employee;
             }
             catch
@@ -72,8 +72,8 @@ namespace SalesManagement.Server.DataAccess
         {
             try
             {
-                Customer emp = db.tblCustomer.Find(id);
-                db.tblCustomer.Remove(emp);
+                Customer emp = db.Customer.Find(id);
+                db.Customer.Remove(emp);
                 db.SaveChanges();
             }
             catch

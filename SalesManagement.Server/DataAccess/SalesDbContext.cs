@@ -9,7 +9,7 @@ namespace SalesManagement.Server.DataAccess
 {
     public class SalesDbContext : DbContext
     {
-        public virtual DbSet<Customer> tblCustomer { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -17,9 +17,10 @@ namespace SalesManagement.Server.DataAccess
                 optionsBuilder.UseSqlServer(@"Data Source=demofunc.database.windows.net;Initial Catalog=DemoBlazor;User ID=jhung;Password=Hhj1101@");
             }
         }
-
-
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("SalesLT");
+        }
 
     }
 }
