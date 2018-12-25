@@ -31,10 +31,10 @@ else
 }
 
 @functions{
-    Customer[] customerList;
+    CustomerVO[] customerList;
     protected override async Task OnInitAsync()
     {
-        customerList = await http.GetJsonAsync<Customer[]>("/api/Customer/Index");
+        customerList = await http.GetJsonAsync<CustomerVO[]>("/api/Customer/Index");
     }
 
 

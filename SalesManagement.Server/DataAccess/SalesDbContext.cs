@@ -9,7 +9,7 @@ namespace SalesManagement.Server.DataAccess
 {
     public class SalesDbContext : DbContext
     {
-        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<CustomerVO> Customer { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
