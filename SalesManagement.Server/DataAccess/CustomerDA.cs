@@ -4,16 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using System;  
 using System.Collections.Generic;  
 using System.Linq;  
-using System.Threading.Tasks;  
-  
+using System.Threading.Tasks;
+using SalesManagement.Server.Models;
+
 namespace SalesManagement.Server.DataAccess
 {
     public class CustomerDA
     {
-        SalesDbContext db = new SalesDbContext();
+        SalesManagementContext db = new SalesManagementContext();
 
         //To Get all employees details   
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<Models.Customer> GetAllCustomers()
         {
             try
             {
@@ -26,7 +27,7 @@ namespace SalesManagement.Server.DataAccess
         }
 
         //To Add new employee record     
-        public void AddCustomer(Customer customer)
+        public void AddCustomer(Models.Customer customer)
         {
             try
             {
@@ -40,7 +41,7 @@ namespace SalesManagement.Server.DataAccess
         }
 
         //To Update the records of a particluar employee    
-        public void UpdateCustomer(Customer customer)
+        public void UpdateCustomer(Models.Customer customer)
         {
             try
             {
@@ -54,11 +55,11 @@ namespace SalesManagement.Server.DataAccess
         }
 
         //Get the details of a particular employee    
-        public Customer GetCustomerData(int id)
+        public Models.Customer GetCustomerData(int id)
         {
             try
             {
-                Customer employee = db.Customer.Find(id);
+                Models.Customer employee = db.Customer.Find(id);
                 return employee;
             }
             catch
@@ -72,7 +73,7 @@ namespace SalesManagement.Server.DataAccess
         {
             try
             {
-                Customer emp = db.Customer.Find(id);
+                Models.Customer emp = db.Customer.Find(id);
                 db.Customer.Remove(emp);
                 db.SaveChanges();
             }

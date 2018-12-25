@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SalesManagement.Server.DataAccess;
-using SalesManagement.Shared.Models;
+using SalesManagement.Server.Models;
 
 namespace SalesManagement.Server.Controllers
 
@@ -12,6 +12,7 @@ namespace SalesManagement.Server.Controllers
 
         [HttpGet]
         [Route("api/Customer/Index")]
+        [Produces(("application/json"))  ]
         public IEnumerable<Customer> Index()
         {
             return da.GetAllCustomers();
