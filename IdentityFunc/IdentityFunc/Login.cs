@@ -39,7 +39,7 @@ namespace IdentityFunc
             {
                 
                 return validator.IsValidLogin(name, password)
-                    ? (ActionResult) new OkObjectResult($"Hello, {authentication.GetSecurityProfile(name)}")
+                    ? (ActionResult) new OkObjectResult(authentication.GetSecurityProfile(name))
                     : new BadRequestObjectResult("No permission to access the system");
 
             }
