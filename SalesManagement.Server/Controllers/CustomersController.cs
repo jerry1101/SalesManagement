@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SalesManagement.Server.DataAccess;
-using SalesManagement.Server.Models;
+using SalesManagement.Shared.ValueObject;
 
 namespace SalesManagement.Server.Controllers
 
@@ -10,36 +11,47 @@ namespace SalesManagement.Server.Controllers
     {
         CustomerDA da = new CustomerDA();
 
+        public CustomersController()
+        {
+            Mapper.Initialize(cfg => cfg.CreateMap<Models.Customer, CustomerVO>());
+        }
+
         [HttpGet]
         [Route("api/Customer/Index")]
         [Produces(("application/json"))  ]
-        public IEnumerable<Customer> Index()
+        public IEnumerable<CustomerVO> Index()
         {
-            return da.GetAllCustomers();
+            List<CustomerVO> customerList = new List<CustomerVO>();
+            foreach (var c in da.GetAllCustomers())
+            {
+                customerList.Add(Mapper.Map<CustomerVO>(c));
+            }
+            
+            return customerList;
         }
 
         [HttpPost]
         [Route("api/Customer/Create")]
-        public void Create([FromBody] Customer customer)
+        public void Create([FromBody] CustomerVO customer)
         {
             if (ModelState.IsValid)
-                da.AddCustomer(customer);
+                da.AddCustomer(Mapper.Map<Models.Customer>(customer));
         }
 
         [HttpGet]
         [Route("api/Customer/Details/{id}")]
-        public Customer Details(int id)
+        public CustomerVO Details(int id)
         {
 
-            return da.GetCustomerData(id);
+            return Mapper.Map<CustomerVO>(da.GetCustomerData(id));
         }
 
         [HttpPut]
         [Route("api/Customer/Edit")]
-        public void Edit([FromBody]Customer customer)
+        public void Edit([FromBody]CustomerVO vo)
         {
             if (ModelState.IsValid)
-                da.UpdateCustomer(customer);
+                da.UpdateCustomer(Mapper.Map<Models.Customer>(vo));
         }
 
         [HttpDelete]
