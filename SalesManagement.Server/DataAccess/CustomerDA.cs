@@ -14,7 +14,7 @@ namespace SalesManagement.Server.DataAccess
         SalesManagementContext db = new SalesManagementContext();
 
         //To Get all employees details   
-        public IEnumerable<Models.Customer> GetAllCustomers()
+        public IEnumerable<Customer> GetAllCustomers()
         {
             try
             {
@@ -27,7 +27,7 @@ namespace SalesManagement.Server.DataAccess
         }
 
         //To Add new employee record     
-        public void AddCustomer(Models.Customer customer)
+        public void AddCustomer(Customer customer)
         {
             try
             {
@@ -55,11 +55,11 @@ namespace SalesManagement.Server.DataAccess
         }
 
         //Get the details of a particular employee    
-        public Models.Customer GetCustomerData(int id)
+        public Customer GetCustomerData(int id)
         {
             try
             {
-                Models.Customer employee = db.Customer.Find(id);
+                Customer employee = db.Customer.Find(id);
                 return employee;
             }
             catch
@@ -73,7 +73,7 @@ namespace SalesManagement.Server.DataAccess
         {
             try
             {
-                Models.Customer emp = db.Customer.Find(id);
+                Customer emp = db.Customer.Find(id);
                 db.Customer.Remove(emp);
                 db.SaveChanges();
             }

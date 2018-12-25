@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SalesManagement.Server.Models;
 
-namespace SalesManagement.Server.Models
+namespace SalesManagement.Server.DataAccess
 {
     public partial class SalesManagementContext : DbContext
     {
