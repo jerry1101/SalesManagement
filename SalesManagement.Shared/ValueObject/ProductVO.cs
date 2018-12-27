@@ -5,7 +5,8 @@ namespace SalesManagement.Shared.ValueObject
 {
     public partial class ProductVO
     {
-
+        public int PurchaseAmount { get; set; }
+        public bool Picked { get; set; }
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string ProductNumber { get; set; }

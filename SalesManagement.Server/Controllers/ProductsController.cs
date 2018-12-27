@@ -39,7 +39,7 @@ namespace SalesManagement.Server.Controllers
             
             var productList = new List<ProductVO>() ;
             
-            foreach (var p in da.GetAllProducts().Take(10))
+            foreach (var p in da.GetAllProducts().Take(30))
             {
                 productList.Add(Mapper.Map<ProductVO>(p));
             }
