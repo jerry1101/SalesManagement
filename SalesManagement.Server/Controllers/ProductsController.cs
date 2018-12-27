@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SalesManagement.Server.DataAccess;
 using SalesManagement.Shared.ValueObject;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SalesManagement.Server.Controllers
 
@@ -25,6 +26,22 @@ namespace SalesManagement.Server.Controllers
             foreach (var c in da.GetAllProducts())
             {
                 productList.Add(Mapper.Map<ProductVO>(c));
+            }
+
+            return productList;
+        }
+
+        [HttpGet]
+        [Route("api/Product/FirstTen")]
+        [Produces(("application/json"))]
+        public IEnumerable<ProductVO> FirstTen()
+        {
+            
+            var productList = new List<ProductVO>() ;
+            
+            foreach (var p in da.GetAllProducts().Take(10))
+            {
+                productList.Add(Mapper.Map<ProductVO>(p));
             }
 
             return productList;

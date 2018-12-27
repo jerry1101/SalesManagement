@@ -1,0 +1,52 @@
+﻿@using SalesManagement.Shared.ValueObject
+@page "/productList"
+@inject HttpClient http
+<h1>Product List Page</h1>
+
+@if (productList == null)
+{
+    <p>Loading Product Data ...</p>
+}
+else
+{
+    <table class="productTable">
+        <thead>
+            <tr>
+                <th>ProductId</th>
+                <th>Name</th>
+                <th>ListPrice</th>
+                <th>Size</th>
+                <th>Weight</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in productList)
+            {
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@p.Name</td>
+                <td>@p.ListPrice</td>
+                <td>@p.Size</td>
+                <td>@p.Weight</td>
+                <td>@p.Color</td>
+            </tr>
+            }
+        </tbody>
+        
+    </table>
+
+}
+
+@functions{
+    ProductVO[] productList;
+    protected override async Task OnInitAsync()
+    {
+        productList = await http.GetJsonAsync<ProductVO[]>("/api/Product/FirstTen");
+    }
+
+
+
+
+
+}
