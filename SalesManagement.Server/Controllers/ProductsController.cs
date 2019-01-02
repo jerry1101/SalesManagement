@@ -14,7 +14,7 @@ namespace SalesManagement.Server.Controllers
 
         public ProductsController()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Models.Product, ProductVO>());
+            
         }
 
         [HttpGet]

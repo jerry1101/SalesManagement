@@ -7,6 +7,7 @@ namespace SalesManagement.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
+
         }
 
         public void Configure(IBlazorApplicationBuilder app)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SalesManagement.Server.DataAccess;
 using SalesManagement.Shared.ValueObject;
@@ -7,18 +8,20 @@ using SalesManagement.Shared.ValueObject;
 namespace SalesManagement.Server.Controllers
 
 {
+    [Authorize(Roles = "Administrator")]
     public class CustomersController : Controller
     {
         CustomerDA da = new CustomerDA();
 
         public CustomersController()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Models.Customer, CustomerVO>());
+           
         }
 
         [HttpGet]
         [Route("api/Customer/Index")]
-        [Produces(("application/json"))  ]
+        [Produces(("application/json"))]
+        
         public IEnumerable<CustomerVO> Index()
         {
             List<CustomerVO> customerList = new List<CustomerVO>();
