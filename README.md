@@ -1,9 +1,10 @@
 # SalesManagement
 
 ## EF data migration
--Open NuGet console
--Add-Migration -Context AppDbContext "First Migration"
--Update-Database -Context AppDbContext
+ - 1.Open NuGet console
+ - 2.Add-Migration -Context AppDbContext "First Migration"
+ - 3.Update-Database -Context AppDbContext
+ 
 ##TO-DO
   - 1.Paging on demand : 
 	/customers? page=1&pagesize=100
