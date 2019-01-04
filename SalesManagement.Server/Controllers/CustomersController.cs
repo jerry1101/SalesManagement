@@ -8,7 +8,8 @@ using SalesManagement.Shared.ValueObject;
 namespace SalesManagement.Server.Controllers
 
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
+    [ApiController]
     public class CustomersController : Controller
     {
         CustomerDA da = new CustomerDA();
